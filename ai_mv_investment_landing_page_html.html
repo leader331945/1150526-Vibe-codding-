@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI MV 製作招商網站</title>
+  <meta name="description" content="AI MV 製作招商網站，展示音樂影像製作、品牌合作與商業應用方案。" />
+  <style>
+    :root {
+      --bg: #050509;
+      --text: #f6f3ea;
+      --muted: rgba(246, 243, 234, 0.72);
+      --line: rgba(255, 255, 255, 0.16);
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-strong: rgba(255, 255, 255, 0.14);
+      --accent: #f4d47a;
+      --accent-2: #8bd9ff;
+      --danger: #ff7a90;
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.48);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "Noto Serif CJK TC", "Noto Serif CJK", "PingFang TC", "Microsoft JhengHei", serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .video-background {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-background iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 177.77777778vh;
+      min-width: 100vw;
+      height: 56.25vw;
+      min-height: 100vh;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      border: 0;
+    }
+
+    .film-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(139, 217, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 78% 20%, rgba(244, 212, 122, 0.16), transparent 30%),
+        linear-gradient(90deg, rgba(5, 5, 9, 0.92), rgba(5, 5, 9, 0.62) 45%, rgba(5, 5, 9, 0.88)),
+        linear-gradient(180deg, rgba(5, 5, 9, 0.28), rgba(5, 5, 9, 0.92));
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.12;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      padding: 22px 28px;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(5, 5, 9, 0.62), rgba(5, 5, 9, 0.18));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background:
+        linear-gradient(135deg, rgba(244, 212, 122, 1), rgba(139, 217, 255, 0.95));
+      box-shadow: 0 0 34px rgba(244, 212, 122, 0.42);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: rgba(246, 243, 234, 0.74);
+      font-size: 14px;
+    }
+
+    nav a {
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border: 1px solid rgba(244, 212, 122, 0.42);
+      border-radius: 999px;
+      background: rgba(244, 212, 122, 0.1);
+      color: var(--accent);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 148px 28px 64px;
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.14fr 0.86fr;
+      gap: 44px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(246, 243, 234, 0.78);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 18px var(--accent);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(46px, 7vw, 100px);
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+      font-weight: 800;
+    }
+
+    .hero-lead {
+      max-width: 660px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: transform .2s ease, background .2s ease, border .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #111;
+      background: linear-gradient(135deg, var(--accent), #fff1bb);
+      box-shadow: 0 18px 56px rgba(244, 212, 122, 0.24);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text);
+    }
+
+    .hero-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.055));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      min-height: 128px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 12px;
+      color: rgba(246, 243, 234, 0.68);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(246, 243, 234, 0.56);
+      font-size: 12px;
+      letter-spacing: .12em;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 46px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.8), transparent);
+    }
+
+    section {
+      padding: 92px 28px;
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 44px;
+      align-items: end;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      letter-spacing: .18em;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 12px 0 0;
+      font-size: clamp(34px, 4.6vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 280px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.22);
+    }
+
+    .card-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(244, 212, 122, 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(244, 212, 122, 0.22);
+      font-weight: 800;
+    }
+
+    .card h3 {
+      margin: 26px 0 14px;
+      font-size: 25px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      margin: 0;
+      color: rgba(246, 243, 234, 0.68);
+      line-height: 1.85;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .process-item {
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.065);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .process-dot {
+      width: 14px;
+      height: 14px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      box-shadow: 0 0 24px rgba(139, 217, 255, .58);
+    }
+
+    .process-item h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .process-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .investment-panel {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 20px;
+      border: 1px solid var(--line);
+      border-radius: 40px;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(244, 212, 122, 0.14), rgba(139, 217, 255, 0.07), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+    }
+
+    .investment-main {
+      padding: 24px;
+    }
+
+    .investment-main h2 {
+      font-size: clamp(36px, 5vw, 70px);
+    }
+
+    .investment-main p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 18px;
+    }
+
+    .package-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .package {
+      padding: 22px;
+      border-radius: 26px;
+      background: rgba(5, 5, 9, 0.42);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .package h3 {
+      margin: 0 0 9px;
+      font-size: 22px;
+    }
+
+    .package p {
+      margin: 0;
+      color: rgba(246, 243, 234, .68);
+      line-height: 1.75;
+    }
+
+    .contact {
+      text-align: center;
+      padding-bottom: 120px;
+    }
+
+    .contact-box {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 54px 36px;
+      border-radius: 42px;
+      border: 1px solid rgba(244, 212, 122, 0.24);
+      background: radial-gradient(circle at top, rgba(244, 212, 122, 0.18), rgba(255,255,255,.06) 42%, rgba(255,255,255,.035));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+    }
+
+    .contact-box p {
+      max-width: 680px;
+      margin: 18px auto 32px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    footer {
+      padding: 30px 28px;
+      color: rgba(246, 243, 234, 0.5);
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(5,5,9,.72);
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .enter-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(244, 212, 122, 0.18), transparent 34%),
+        rgba(5,5,9,.88);
+      backdrop-filter: blur(16px);
+      transition: opacity .45s ease, visibility .45s ease;
+    }
+
+    .enter-gate.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .enter-card {
+      max-width: 620px;
+      width: 100%;
+      padding: 36px;
+      border-radius: 36px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .enter-card h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+    }
+
+    .enter-card p {
+      margin: 18px auto 28px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .enter-button {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      .hero-inner,
+      .section-head,
+      .investment-panel,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        margin-top: 16px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      header {
+        padding: 16px 18px;
+      }
+
+      .hero,
+      section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero {
+        padding-top: 124px;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .investment-panel,
+      .contact-box,
+      .enter-card {
+        border-radius: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-background" aria-hidden="true">
+    <iframe
+      src="https://www.youtube.com/embed/LwLXRVJvMN0?autoplay=1&mute=1&loop=1&playlist=LwLXRVJvMN0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+      title="Background video"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="film-overlay" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="enter-gate" id="enterGate">
+    <div class="enter-card">
+      <div class="eyebrow" style="margin-left:auto;margin-right:auto;">
+        <span class="pulse"></span>
+        AI 影像招商企劃
+      </div>
+      <h2>進入 AI MV 製作展示現場</h2>
+      <p>點擊後進入網站。背景影片將滿版呈現並持續循環播放，讓投資人與合作夥伴先感受到視覺風格，再閱讀招商方案。</p>
+      <button class="button button-primary enter-button" id="enterButton">進入網站</button>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <span class="brand-mark"></span>
+        <span>AI MV STUDIO</span>
+      </a>
+      <nav aria-label="主要導覽">
+        <a href="#value">合作價值</a>
+        <a href="#process">製作流程</a>
+        <a href="#investment">招商方案</a>
+        <a href="#contact" class="nav-cta">預約洽談</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="首頁主視覺">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">
+            <span class="pulse"></span>
+            AI Music Video Production / AI 音樂影像製作
+          </div>
+          <h1>用 AI 影像，打造下一支被看見的音樂作品。</h1>
+          <p class="hero-lead">我們協助品牌、歌手、唱片團隊與內容創作者，把音樂概念轉化為高辨識度影像，縮短製作週期，擴大宣傳素材，並形成可招商的商業內容資產。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#investment">查看招商方案</a>
+            <a class="button button-secondary" href="#process">了解製作流程</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="關鍵數據">
+          <div class="metric-grid">
+            <div class="metric">
+              <strong>3x</strong>
+              <span>同一首歌可延伸多版本視覺素材，支援短影音、預告、主視覺與宣傳剪輯。</span>
+            </div>
+            <div class="metric">
+              <strong>48h</strong>
+              <span>從初稿方向到視覺提案，快速形成可討論的招商樣貌。</span>
+            </div>
+            <div class="metric">
+              <strong>360°</strong>
+              <span>覆蓋 MV、社群素材、舞台視覺、品牌聯名與展演宣傳。</span>
+            </div>
+            <div class="metric">
+              <strong>1:1</strong>
+              <span>專案制溝通，依歌曲、受眾與商業目標規劃影像策略。</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>SCROLL</span>
+        <span class="scroll-line"></span>
+      </div>
+    </section>
+
+    <section id="value">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">WHY INVEST</div>
+            <h2>不只是製作 MV，而是建立可擴散的內容資產。</h2>
+          </div>
+          <p class="section-copy">AI MV 的招商重點不是單支影片，而是讓音樂作品能在宣傳週期中持續產出素材、測試市場反應、吸引品牌合作，並降低傳統影像製作的前期成本與時間風險。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-number">01</div>
+            <h3>製作效率</h3>
+            <p>以視覺腳本、分鏡情緒與 AI 影像流程快速建立初版，讓團隊更早看到方向，減少反覆溝通成本。</p>
+          </article>
+          <article class="card">
+            <div class="card-number">02</div>
+            <h3>商業包裝</h3>
+            <p>把歌曲定位、受眾語言、品牌調性與贊助露出整合進影像企劃，讓內容更容易被合作方理解。</p>
+          </article>
+          <article class="card">
+            <div class="card-number">03</div>
+            <h3>素材延展</h3>
+            <p>同一套影像世界觀可拆成主 MV、短影音、海報、舞台背景與預告素材，延長作品的曝光週期。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">PRODUCTION FLOW</div>
+            <h2>從音樂概念到招商成品，流程清楚可控。</h2>
+          </div>
+          <p class="section-copy">每個階段都保留決策點，讓出資方、創作者與製作團隊能在同一張藍圖上討論，避免只有「感覺很好」卻無法落地。</p>
+        </div>
+
+        <div class="process">
+          <div class="process-item">
+            <span class="process-dot"></span>
+            <div>
+              <h3>需求訪談與歌曲定位</h3>
+              <p>確認曲風、目標受眾、預算區間、宣傳節奏與合作品牌限制。</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <span class="process-dot"></span>
+            <div>
+              <h3>視覺世界觀提案</h3>
+              <p>建立情緒板、分鏡方向、角色設定、場景調性與招商賣點。</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <span class="process-dot"></span>
+            <div>
+              <h3>AI 影像生成與剪輯</h3>
+              <p>產出關鍵畫面、動態鏡頭、節奏剪輯與多平台輸出版型。</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <span class="process-dot"></span>
+            <div>
+              <h3>招商素材包交付</h3>
+              <p>整理影片、短影音、主視覺、提案頁與合作露出建議。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="investment">
+      <div class="section-inner">
+        <div class="investment-panel">
+          <div class="investment-main">
+            <div class="section-kicker">PARTNERSHIP</div>
+            <h2>招商合作方案</h2>
+            <p>依專案成熟度與合作目標，提供從視覺概念驗證到完整 MV 製作的彈性方案。適合音樂發行、品牌聯名、活動宣傳、藝人包裝與內容平台合作。</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact">索取企劃書</a>
+              <a class="button button-secondary" href="#value">回看價值</a>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package">
+              <h3>概念驗證方案</h3>
+              <p>適合初步募資、內部提案與歌曲發行前測試，交付視覺方向、樣片與招商重點。</p>
+            </div>
+            <div class="package">
+              <h3>完整製作方案</h3>
+              <p>適合正式發行與品牌合作，包含 MV 製作、短影音剪輯、主視覺與素材包。</p>
+            </div>
+            <div class="package">
+              <h3>品牌聯名方案</h3>
+              <p>適合企業贊助、產品置入與活動宣傳，將品牌訊息融入影像世界觀與宣傳素材。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-box">
+        <div class="section-kicker">CONTACT</div>
+        <h2>讓下一支作品，成為可招商的視覺事件。</h2>
+        <p>提供歌曲、品牌目標、預算範圍與期望上線時間後，我們會回覆合適的製作方向與招商包裝建議。</p>
+        <a class="button button-primary" href="mailto:hello@example.com?subject=AI%20MV%20%E8%A3%BD%E4%BD%9C%E6%8B%9B%E5%95%86%E8%AB%AE%E8%A9%A2">立即洽詢</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 AI MV Studio. All rights reserved.</span>
+      <span>AI Music Video Production / AI 音樂影像製作</span>
+    </div>
+  </footer>
+
+  <script>
+    const enterGate = document.getElementById('enterGate');
+    const enterButton = document.getElementById('enterButton');
+
+    enterButton.addEventListener('click', () => {
+      enterGate.classList.add('is-hidden');
+    });
+  </script>
+</body>
+</html>

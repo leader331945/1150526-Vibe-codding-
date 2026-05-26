@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI MV 專業影像製作招商</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body class="text-white font-sans">
+
+    <!-- 背景影片 -->
+    <iframe class="video-background" 
+            src="https://www.youtube.com/embed/LwLXRVJvMN0?autoplay=1&mute=1&loop=1&playlist=LwLXRVJvMN0&controls=0&showinfo=0&rel=0&modestbranding=1" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+    </iframe>
+
+    <!-- 內容容器 -->
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center p-6 overlay">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">AI 影像，定義未來</h1>
+        <p class="text-xl md:text-2xl mb-10 max-w-2xl text-gray-200">透過尖端 AI 技術，為您的品牌打造絕無僅有的視覺 MV，引領產業革命。</p>
+        
+        <div class="flex gap-4">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg">
+                立即合作諮詢
+            </button>
+            <button class="bg-transparent border-2 border-white hover:bg-white hover:text-black font-semibold py-3 px-8 rounded-full transition duration-300">
+                觀看作品集
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
