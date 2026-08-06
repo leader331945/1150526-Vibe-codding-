@@ -3,357 +3,372 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Codex 寵物功能怎麼用？任務狀態、提醒與自訂角色教學｜鼎威維修 TopWin</title>
+  <title>Codex 寵物功能怎麼用？任務狀態、提醒與自訂角色教學</title>
   <meta name="description" content="Codex 寵物功能完整教學：適合誰使用、如何開啟、怎麼看任務狀態、自訂角色與公司流程搭配，以及使用 AI 工具時的資料隱私與備份提醒。" />
-  <meta property="og:title" content="Codex 寵物功能怎麼用？任務狀態、提醒與自訂角色教學" />
-  <meta property="og:description" content="讓任務狀態變得更直覺——Codex 寵物功能完整教學與公司使用注意事項。" />
-  <meta property="og:type" content="article" />
   <style>
     :root {
-      --navy: #17335f;
-      --navy-deep: #0f2647;
-      --blue: #2f6bd8;
-      --blue-bright: #3b82f6;
-      --sky: #e8f0fc;
-      --ink: #1f2a3d;
-      --muted: #55627a;
-      --line: #e2e8f2;
-      --card: #ffffff;
-      --bg: #f4f7fc;
-      --shadow: 0 18px 48px rgba(23, 51, 95, 0.10);
-      --shadow-sm: 0 6px 20px rgba(23, 51, 95, 0.08);
-      --radius: 18px;
-      --max: 1080px;
+      --paper: #f6f4ee;
+      --paper-2: #efece3;
+      --card: #fbfaf6;
+      --ink: #403f39;
+      --ink-soft: #79766c;
+      --line: #ddd8cd;
+      --accent: #a1846a;      /* 牛皮／茶色 */
+      --accent-soft: #ece3d6;
+      --sage: #8d998a;
+      --max: 820px;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       color: var(--ink);
-      background: var(--bg);
-      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-      line-height: 1.75;
+      background: var(--paper);
+      font-family: "Noto Sans TC", "PingFang TC", "Hiragino Sans", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.9;
+      font-weight: 400;
       -webkit-font-smoothing: antialiased;
+      letter-spacing: .02em;
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- Hero ---------- */
+    header {
+      padding: 64px 0 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      font-size: 13px; letter-spacing: .35em; color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+    .pet-stage { margin: 0 auto 26px; width: 168px; }
+    header h1 {
+      font-size: clamp(26px, 5vw, 38px); font-weight: 700;
+      margin: 0 0 10px; letter-spacing: .02em;
+    }
+    header .sub {
+      font-size: clamp(15px, 2.4vw, 18px); color: var(--ink-soft);
+      font-weight: 500; margin: 0 0 22px;
+    }
+    header p.lede {
+      max-width: 600px; margin: 0 auto; color: var(--ink-soft);
+      font-size: 15px;
     }
 
-    a { color: var(--blue); }
-
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-
-    /* ---------- Header ---------- */
-    header.hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
-      color: #fff;
-      padding: 56px 0 68px;
-      position: relative;
-      overflow: hidden;
+    /* ---------- Pet status trio ---------- */
+    .status-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 18px; margin: 46px 0 8px;
     }
-    header.hero::after {
-      content: "";
-      position: absolute;
-      right: -80px; top: -80px;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(59,130,246,0.35), transparent 70%);
-      pointer-events: none;
+    .status {
+      text-align: center; padding: 22px 12px;
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
     }
-    .brand-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; flex-wrap: wrap; margin-bottom: 34px;
-    }
-    .brand {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-weight: 700; letter-spacing: 2px;
-    }
-    .brand .logo {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: #fff; color: var(--navy);
-      display: grid; place-items: center; font-weight: 800; font-size: 20px;
-    }
-    .brand small { display: block; font-size: 11px; letter-spacing: 3px; opacity: .8; font-weight: 500; }
-    .kicker {
-      display: inline-block; font-size: 13px; letter-spacing: 2px;
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
-      padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
-    }
-    header.hero h1 {
-      font-size: clamp(30px, 6vw, 52px); line-height: 1.15;
-      margin: 0 0 12px; font-weight: 800;
-    }
-    header.hero .sub {
-      font-size: clamp(16px, 2.4vw, 20px); font-weight: 600;
-      color: #bcd3f7; margin: 0 0 18px;
-    }
-    header.hero p.lede {
-      max-width: 660px; color: rgba(255,255,255,0.86); font-size: 16px; margin: 0;
-    }
+    .status svg { width: 76px; height: 76px; }
+    .status b { display: block; margin-top: 10px; font-size: 14px; font-weight: 600; }
+    .status span { font-size: 12.5px; color: var(--ink-soft); }
 
     /* ---------- Steps ---------- */
-    .steps {
-      margin-top: -40px; position: relative; z-index: 2;
+    .steps { margin: 56px 0 10px; }
+    .steps h2, .section-title {
+      font-size: 15px; letter-spacing: .3em; color: var(--accent);
+      font-weight: 700; margin: 0 0 22px; text-align: center;
     }
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+    .steps-list {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
     }
-    .step {
-      background: var(--card); border-radius: 14px; padding: 20px 16px;
-      box-shadow: var(--shadow-sm); border: 1px solid var(--line);
+    .stp {
+      text-align: center; padding: 18px 8px;
+      border: 1px solid var(--line); border-radius: 12px; background: var(--card);
     }
-    .step .num {
-      width: 30px; height: 30px; border-radius: 50%;
-      background: var(--blue); color: #fff; font-weight: 700;
-      display: grid; place-items: center; margin-bottom: 12px; font-size: 15px;
+    .stp .n {
+      display: inline-grid; place-items: center;
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 1px solid var(--accent); color: var(--accent);
+      font-size: 13px; font-weight: 700; margin-bottom: 10px;
     }
-    .step h3 { margin: 0 0 6px; font-size: 16px; color: var(--navy); }
-    .step p { margin: 0; font-size: 13px; color: var(--muted); }
+    .stp b { display: block; font-size: 14px; margin-bottom: 4px; }
+    .stp span { font-size: 12px; color: var(--ink-soft); line-height: 1.6; }
 
-    /* ---------- Section cards ---------- */
-    main { padding: 56px 0 20px; }
-    .grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+    /* ---------- Content sections ---------- */
+    main { padding: 30px 0 10px; }
+    section.block {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
     }
-    .card {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 26px 26px 24px;
-      box-shadow: var(--shadow-sm);
+    section.block:last-of-type { border-bottom: none; }
+    .num-title {
+      display: flex; align-items: baseline; gap: 12px; margin: 0 0 12px;
     }
-    .card.wide { grid-column: 1 / -1; }
-    .card .head {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+    .num-title .idx {
+      font-size: 13px; color: var(--accent); font-weight: 700;
+      letter-spacing: .1em; flex: 0 0 auto; padding-top: 2px;
     }
-    .card .badge {
-      flex: 0 0 auto; width: 38px; height: 38px; border-radius: 10px;
-      background: var(--sky); color: var(--blue);
-      display: grid; place-items: center; font-weight: 800; font-size: 15px;
+    .num-title h2 { font-size: 21px; font-weight: 700; margin: 0; }
+    section.block p { margin: 0 0 10px; color: #52504a; }
+    section.block ul, section.block ol {
+      margin: 6px 0 0; padding-left: 20px; color: #52504a;
     }
-    .card h2 { margin: 0; font-size: 20px; color: var(--navy); }
-    .card p { margin: 0 0 10px; color: var(--muted); }
-    .card ul { margin: 0; padding-left: 20px; color: var(--muted); }
-    .card ul li { margin-bottom: 6px; }
-    .card ol { margin: 0; padding-left: 22px; color: var(--muted); }
-    .card ol li { margin-bottom: 6px; }
-    .card strong { color: var(--ink); }
+    section.block li { margin-bottom: 6px; }
+    strong { color: var(--ink); font-weight: 700; }
 
-    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
     .tag {
-      font-size: 13px; background: var(--sky); color: var(--navy);
-      padding: 5px 12px; border-radius: 999px; font-weight: 600;
+      font-size: 13px; background: var(--accent-soft); color: #6f5942;
+      padding: 5px 13px; border-radius: 999px;
     }
 
-    .note {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, var(--sky), #f4f9ff);
-      border: 1px solid #cfe0fb; border-radius: var(--radius);
-      padding: 22px 26px; color: var(--navy);
+    .callout {
+      background: var(--accent-soft); border: 1px solid #e2d6c4;
+      border-radius: 14px; padding: 22px 24px; margin-top: 6px;
+      color: #5f4f3e;
     }
-    .note strong { color: var(--navy-deep); }
+    .callout strong { color: #4a3c2d; }
 
-    /* ---------- Recap ---------- */
-    .recap {
-      background: var(--navy); color: #fff; border-radius: var(--radius);
-      padding: 30px 30px 26px; margin-top: 6px;
-      grid-column: 1 / -1;
+    .recap { background: var(--card); }
+    .recap ol { counter-reset: r; list-style: none; padding-left: 0; margin-top: 8px; }
+    .recap ol li {
+      position: relative; padding-left: 34px; margin-bottom: 10px;
     }
-    .recap h2 { margin: 0 0 16px; font-size: 22px; }
-    .recap ol { margin: 0; padding-left: 22px; }
-    .recap ol li { margin-bottom: 8px; color: rgba(255,255,255,0.9); }
+    .recap ol li::before {
+      counter-increment: r; content: counter(r);
+      position: absolute; left: 0; top: 1px;
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 1px solid var(--accent); color: var(--accent);
+      font-size: 12px; font-weight: 700;
+      display: grid; place-items: center;
+    }
 
     /* ---------- Footer ---------- */
     footer {
-      background: var(--navy-deep); color: #fff; margin-top: 48px;
-      padding: 34px 0;
+      text-align: center; padding: 40px 0 48px;
+      border-top: 1px solid var(--line);
     }
-    .foot-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; flex-wrap: wrap;
-    }
-    .foot-row .msg { font-size: 15px; color: rgba(255,255,255,0.88); }
-    .foot-row a { color: #9cc2ff; font-weight: 700; text-decoration: none; }
+    footer .brand { font-weight: 700; letter-spacing: .1em; }
+    footer .brand small { color: var(--ink-soft); font-weight: 400; letter-spacing: .3em; font-size: 11px; display:block; margin-top:2px;}
+    footer .msg { color: var(--ink-soft); font-size: 14px; margin: 14px 0 12px; }
+    footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
     .hashtags {
-      margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.55);
-      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 20px; font-size: 12.5px; color: #a49f93;
+      display: flex; flex-wrap: wrap; gap: 6px 12px; justify-content: center;
     }
-    .hashtags span { white-space: nowrap; }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 860px) {
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
-      .grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 520px) {
-      .steps-grid { grid-template-columns: 1fr; }
-      header.hero { padding: 40px 0 60px; }
+    @media (max-width: 720px) {
+      .steps-list { grid-template-columns: repeat(2, 1fr); }
+      .status-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
+
+  <header>
     <div class="wrap">
-      <div class="brand-row">
-        <span class="brand">
-          <span class="logo">TW</span>
-          <span>鼎威維修<small>TOPWIN FIX</small></span>
-        </span>
-        <span style="opacity:.8; font-size:14px;">工作效率 × AI 工具教學</span>
+      <div class="eyebrow">CODEX 教學</div>
+
+      <!-- 主角：貓咪寵物 -->
+      <div class="pet-stage">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Codex 寵物貓咪">
+          <!-- 影子 -->
+          <ellipse cx="100" cy="176" rx="46" ry="7" fill="#e6e0d4"/>
+          <!-- 身體 -->
+          <path d="M62 172c-8-26-6-56 8-74 8-11 22-17 30-17s22 6 30 17c14 18 16 48 8 74H62z" fill="#fbfaf6" stroke="#403f39" stroke-width="3.2"/>
+          <!-- 尾巴 -->
+          <path d="M136 168c22 2 34-10 32-28-1-10-9-16-16-14-8 3-7 13-1 15" fill="#fbfaf6" stroke="#403f39" stroke-width="3.2" stroke-linecap="round"/>
+          <!-- 耳朵 -->
+          <path d="M70 96 63 63l26 16z" fill="#fbfaf6" stroke="#403f39" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M130 96l7-33-26 16z" fill="#fbfaf6" stroke="#403f39" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M72 88l-3-14 11 7z" fill="#e7b7a3"/>
+          <path d="M128 88l3-14-11 7z" fill="#e7b7a3"/>
+          <!-- 頭 -->
+          <circle cx="100" cy="106" r="40" fill="#fbfaf6" stroke="#403f39" stroke-width="3.2"/>
+          <!-- 眼睛 -->
+          <circle cx="86" cy="104" r="4.4" fill="#403f39"/>
+          <circle cx="114" cy="104" r="4.4" fill="#403f39"/>
+          <!-- 腮紅 -->
+          <ellipse cx="76" cy="116" rx="6" ry="3.6" fill="#f0cdbe"/>
+          <ellipse cx="124" cy="116" rx="6" ry="3.6" fill="#f0cdbe"/>
+          <!-- 鼻 + 嘴 -->
+          <path d="M97 114h6l-3 3z" fill="#c98b76"/>
+          <path d="M100 117c-3 4-9 4-11 0M100 117c3 4 9 4 11 0" stroke="#403f39" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- 鬍鬚 -->
+          <path d="M60 108h18M62 118l17-4M140 108h-18M138 118l-17-4" stroke="#403f39" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </div>
-      <span class="kicker">Codex 教學</span>
+
       <h1>Codex 寵物功能怎麼用？</h1>
       <div class="sub">任務狀態、提醒、自訂角色一次看懂</div>
       <p class="lede">
-        使用 Codex 處理資料、修改資料或協助整理工作時，有些任務需要等幾分鐘才會完成。
-        這時如果切去做其他事，很容易忘記回來看進度。Codex 寵物功能的重點，
-        就是讓任務狀態變得更直覺——能協助執行任務、回報進度、提醒重要事項，讓工作更專注、不漏任務。
+        使用 Codex 處理資料、修改資料或協助整理工作時，有些任務要等幾分鐘才完成，
+        切去做別的事很容易忘記回來看進度。寵物功能讓任務狀態變得更直覺——
+        牠會替你執行任務、回報進度、提醒重要事項，讓工作更專注、不漏任務。
       </p>
+
+      <!-- 三種狀態表情 -->
+      <div class="status-row">
+        <div class="status">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="52" r="34" fill="#fbfaf6" stroke="#403f39" stroke-width="3"/>
+            <path d="M32 40l-5-16 14 9zM68 40l5-16-14 9z" fill="#fbfaf6" stroke="#403f39" stroke-width="3" stroke-linejoin="round"/>
+            <!-- 思考：眼睛往上、頭上冒泡 -->
+            <circle cx="42" cy="50" r="3.4" fill="#403f39"/>
+            <circle cx="58" cy="50" r="3.4" fill="#403f39"/>
+            <path d="M45 62c3 3 7 3 10 0" stroke="#403f39" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="80" cy="24" r="3" fill="#a1846a"/>
+            <circle cx="88" cy="16" r="2" fill="#a1846a"/>
+          </svg>
+          <b>思考中</b><span>正在分析你的需求</span>
+        </div>
+        <div class="status">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="52" r="34" fill="#fbfaf6" stroke="#403f39" stroke-width="3"/>
+            <path d="M32 40l-5-16 14 9zM68 40l5-16-14 9z" fill="#fbfaf6" stroke="#403f39" stroke-width="3" stroke-linejoin="round"/>
+            <!-- 執行：專注小眼 + 進度條 -->
+            <path d="M38 50h8M54 50h8" stroke="#403f39" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M45 60c3 2 7 2 10 0" stroke="#403f39" stroke-width="2.4" stroke-linecap="round"/>
+            <rect x="34" y="74" width="32" height="6" rx="3" fill="#ece3d6"/>
+            <rect x="34" y="74" width="20" height="6" rx="3" fill="#a1846a"/>
+          </svg>
+          <b>執行中</b><span>任務正在進行</span>
+        </div>
+        <div class="status">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="52" r="34" fill="#fbfaf6" stroke="#403f39" stroke-width="3"/>
+            <path d="M32 40l-5-16 14 9zM68 40l5-16-14 9z" fill="#fbfaf6" stroke="#403f39" stroke-width="3" stroke-linejoin="round"/>
+            <!-- 完成：彎彎笑眼 + 勾 -->
+            <path d="M38 49c2-3 6-3 8 0M54 49c2-3 6-3 8 0" stroke="#403f39" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M44 60c3 3 9 3 12 0" stroke="#403f39" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M40 74l6 6 14-13" stroke="#8d998a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <b>完成</b><span>已回報並記錄結果</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <section class="steps">
-    <div class="wrap">
-      <div class="steps-grid">
-        <div class="step">
-          <div class="num">1</div>
-          <h3>開啟設定</h3>
-          <p>啟用 Codex 寵物並進行基本設定</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h3>選擇寵物</h3>
-          <p>選擇或新增寵物並指派角色定位</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h3>任務進行</h3>
-          <p>寵物協助執行任務並持續回報進度</p>
-        </div>
-        <div class="step">
-          <div class="num">4</div>
-          <h3>狀態提醒</h3>
-          <p>即時提醒任務狀態與重要通知</p>
-        </div>
-        <div class="step">
-          <div class="num">5</div>
-          <h3>完成回報</h3>
-          <p>任務完成回報並自動記錄結果</p>
-        </div>
+  <div class="wrap">
+    <div class="steps">
+      <h2>五個步驟</h2>
+      <div class="steps-list">
+        <div class="stp"><span class="n">1</span><b>開啟設定</b><span>啟用寵物並基本設定</span></div>
+        <div class="stp"><span class="n">2</span><b>選擇寵物</b><span>指派角色定位</span></div>
+        <div class="stp"><span class="n">3</span><b>任務進行</b><span>持續回報進度</span></div>
+        <div class="stp"><span class="n">4</span><b>狀態提醒</b><span>即時通知重要事項</span></div>
+        <div class="stp"><span class="n">5</span><b>完成回報</b><span>自動記錄結果</span></div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <main>
-    <div class="wrap">
-      <div class="grid">
+  <main class="wrap">
+    <section class="block">
+      <div class="num-title"><span class="idx">01</span><h2>Codex 寵物是什麼</h2></div>
+      <p>可以把牠理解成<strong>任務陪伴與狀態提示介面</strong>，是整合於 Codex 的智慧代理夥伴。讓你更容易知道牠現在是在思考、執行、等待回覆，還是已經完成。</p>
+    </section>
 
-        <article class="card">
-          <div class="head"><span class="badge">1</span><h2>Codex 寵物是什麼</h2></div>
-          <p>可以把它理解成<strong>任務陪伴與狀態提示介面</strong>，是整合於 Codex 的智慧代理夥伴，讓你更容易知道 Codex 目前是在思考、執行、等待回覆，還是已經完成。</p>
-        </article>
+    <section class="block">
+      <div class="num-title"><span class="idx">02</span><h2>適合哪些人使用</h2></div>
+      <p>常把 Codex 拿來整理資料、寫資料、查流程、改程式、做內容或跑多步驟任務的人，都適合用這類狀態提醒。</p>
+      <ul>
+        <li>專案經理：追蹤進度、彙整回報</li>
+        <li>工程師：自動化執行與測試任務</li>
+        <li>設計師：素材整理、命名與檢查</li>
+        <li>行銷人員：排程貼文、成效追蹤</li>
+      </ul>
+    </section>
 
-        <article class="card">
-          <div class="head"><span class="badge">2</span><h2>適合哪些人使用</h2></div>
-          <p>常把 Codex 拿來整理資料、寫資料、查流程、改程式、做內容或跑多步驟任務的人，都適合用這類狀態提醒。</p>
-          <ul>
-            <li>專案經理：追蹤進度、彙整回報</li>
-            <li>工程師：自動化執行與測試任務</li>
-            <li>設計師：素材整理、命名與檢查</li>
-            <li>行銷人員：排程貼文、成效追蹤</li>
-          </ul>
-        </article>
+    <section class="block">
+      <div class="num-title"><span class="idx">03</span><h2>怎麼開啟</h2></div>
+      <p>通常從 Codex 設定或相關功能入口進入，選擇寵物或角色後，再依需求調整通知、顯示與任務狀態提示。</p>
+      <ol>
+        <li>登入 Codex</li>
+        <li>進入「寵物」或「Agents」頁面</li>
+        <li>點擊「啟用寵物」</li>
+        <li>選擇預設寵物或新增寵物</li>
+        <li>設定基本權限與通知方式</li>
+      </ol>
+    </section>
 
-        <article class="card">
-          <div class="head"><span class="badge">3</span><h2>怎麼開啟</h2></div>
-          <p>通常從 Codex 設定或相關功能入口進入，選擇寵物或角色後，再依需求調整通知、顯示與任務狀態提示。</p>
-          <ol>
-            <li>登入 Codex</li>
-            <li>進入「寵物」或「Agents」頁面</li>
-            <li>點擊「啟用寵物」</li>
-            <li>選擇預設寵物或新增寵物</li>
-            <li>設定基本權限與通知方式</li>
-          </ol>
-        </article>
+    <section class="block">
+      <div class="num-title"><span class="idx">04</span><h2>怎麼看任務狀態</h2></div>
+      <p>重點是確認任務正在<strong>進行、完成、失敗、等待你補資料或需要確認</strong>，而不是只看畫面有沒有動。</p>
+      <ol>
+        <li>進入任務或寵物對話視窗</li>
+        <li>查看即時進度條與狀態標籤</li>
+        <li>點擊「詳情」查看執行紀錄</li>
+        <li>可篩選：全部／進行中／已完成／失敗</li>
+      </ol>
+    </section>
 
-        <article class="card">
-          <div class="head"><span class="badge">4</span><h2>怎麼看任務狀態</h2></div>
-          <p>重點是確認任務正在<strong>進行、完成、失敗、等待你補資料或需要確認</strong>，而不是只看畫面有沒有動。</p>
-          <ol>
-            <li>進入任務或寵物對話視窗</li>
-            <li>查看即時進度條與狀態標籤</li>
-            <li>點擊「詳情」查看執行紀錄</li>
-            <li>可篩選：全部／進行中／已完成／失敗</li>
-          </ol>
-        </article>
-
-        <article class="card">
-          <div class="head"><span class="badge">5</span><h2>自訂角色有什麼用</h2></div>
-          <p>不同角色可以對應不同工作習慣，例如行政整理、工程檢查、內容企劃、客服協助或資料分析。</p>
-          <div class="tag-row">
-            <span class="tag">行政整理</span>
-            <span class="tag">工程檢查</span>
-            <span class="tag">內容企劃</span>
-            <span class="tag">客服協助</span>
-            <span class="tag">資料分析</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="head"><span class="badge">6</span><h2>等待任務時怎麼用</h2></div>
-          <p>可以先處理其他工作，等狀態提醒再回來看結果，避免一直盯著畫面，也減少漏掉完成通知。</p>
-          <ul>
-            <li>讓寵物幫你整理資料、彙整筆記</li>
-            <li>自動監控外部變動（如 PR、郵件、表單）</li>
-            <li>定期產出摘要或建議下一步</li>
-            <li>學習你的工作習慣，優化後續協助</li>
-          </ul>
-        </article>
-
-        <article class="card wide">
-          <div class="head"><span class="badge">7</span><h2>公司流程怎麼搭配</h2></div>
-          <p>若公司用 AI 協助 SOP、客服、行銷或資料處理，建議把寵物整合到團隊 SOP，並明確定義下列項目，確保流程順暢：</p>
-          <ul>
-            <li><strong>任務名稱</strong>：明確定義任務指派與範圍</li>
-            <li><strong>交付格式</strong>：統一回報與驗收標準</li>
-            <li><strong>檢查規則</strong>：定期檢視角色與權限</li>
-            <li><strong>保存位置</strong>：紀錄與改善的存放規範</li>
-          </ul>
-        </article>
-
-        <div class="note">
-          <div class="head"><span class="badge">8</span><h2 style="font-size:19px;">資料隱私要注意</h2></div>
-          <p style="color:var(--navy);">不要把不該外流的<strong>客戶資料、密碼、驗證碼、付款資訊或私人檔案</strong>隨意丟進 AI 工具。敏感資料請依公司資安政策處理，並善用「最小權限、透明可控、隨時可查」原則——可隨時調整或撤銷存取權限，也支援刪除對話與任務紀錄。</p>
-        </div>
-
-        <article class="card wide">
-          <div class="head"><span class="badge">9</span><h2>鼎威維修的使用提醒</h2></div>
-          <p>AI 工具再方便，重要照片、LINE、備忘錄、工作資料仍要有<strong>備份與權限管理</strong>，避免裝置故障時資料中斷。若手機或電腦出狀況，先確保資料安全，再談維修與還原。</p>
-        </article>
-
-        <div class="recap">
-          <h2>懶人包</h2>
-          <ol>
-            <li>Codex 寵物可讓任務狀態更直覺</li>
-            <li>適合多步驟、長時間等待的任務</li>
-            <li>要看完成、失敗或等待補資料狀態</li>
-            <li>自訂角色可對應不同工作流程</li>
-            <li>公司使用 AI 要有資料權限規範</li>
-            <li>重要資料仍要備份</li>
-          </ol>
-        </div>
-
+    <section class="block">
+      <div class="num-title"><span class="idx">05</span><h2>自訂角色有什麼用</h2></div>
+      <p>不同角色可以對應不同工作習慣，例如行政整理、工程檢查、內容企劃、客服協助或資料分析。</p>
+      <div class="tag-row">
+        <span class="tag">行政整理</span>
+        <span class="tag">工程檢查</span>
+        <span class="tag">內容企劃</span>
+        <span class="tag">客服協助</span>
+        <span class="tag">資料分析</span>
       </div>
-    </div>
+    </section>
+
+    <section class="block">
+      <div class="num-title"><span class="idx">06</span><h2>等待任務時怎麼用</h2></div>
+      <p>可以先處理其他工作，等狀態提醒再回來看結果，避免一直盯著畫面，也減少漏掉完成通知。</p>
+      <ul>
+        <li>讓寵物幫你整理資料、彙整筆記</li>
+        <li>自動監控外部變動（如 PR、郵件、表單）</li>
+        <li>定期產出摘要或建議下一步</li>
+        <li>學習你的工作習慣，優化後續協助</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <div class="num-title"><span class="idx">07</span><h2>公司流程怎麼搭配</h2></div>
+      <p>若公司用 AI 協助 SOP、客服、行銷或資料處理，建議把寵物整合到團隊 SOP，並明確定義下列項目：</p>
+      <ul>
+        <li><strong>任務名稱</strong>：明確定義任務指派與範圍</li>
+        <li><strong>交付格式</strong>：統一回報與驗收標準</li>
+        <li><strong>檢查規則</strong>：定期檢視角色與權限</li>
+        <li><strong>保存位置</strong>：紀錄與改善的存放規範</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <div class="num-title"><span class="idx">08</span><h2>資料隱私要注意</h2></div>
+      <div class="callout">
+        不要把不該外流的<strong>客戶資料、密碼、驗證碼、付款資訊或私人檔案</strong>隨意丟進 AI 工具。敏感資料請依公司資安政策處理，並善用「最小權限、透明可控、隨時可查」原則——可隨時調整或撤銷存取權限，也支援刪除對話與任務紀錄。
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="num-title"><span class="idx">09</span><h2>鼎威維修的使用提醒</h2></div>
+      <p>AI 工具再方便，重要照片、LINE、備忘錄、工作資料仍要有<strong>備份與權限管理</strong>，避免裝置故障時資料中斷。若手機或電腦出狀況，先確保資料安全，再談維修與還原。</p>
+    </section>
+
+    <section class="block recap">
+      <div class="num-title"><span class="idx">10</span><h2>懶人包</h2></div>
+      <ol>
+        <li>Codex 寵物可讓任務狀態更直覺</li>
+        <li>適合多步驟、長時間等待的任務</li>
+        <li>要看完成、失敗或等待補資料狀態</li>
+        <li>自訂角色可對應不同工作流程</li>
+        <li>公司使用 AI 要有資料權限規範</li>
+        <li>重要資料仍要備份</li>
+      </ol>
+    </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <div class="foot-row">
-        <span class="msg">讓 Codex 寵物成為你的最佳工作夥伴，專注重要事，其他交給它！</span>
-        <a href="https://www.topwinfix.com.tw" target="_blank" rel="noopener">topwinfix.com.tw</a>
-      </div>
+      <div class="brand">鼎威維修<small>TOPWIN FIX</small></div>
+      <p class="msg">讓 Codex 寵物成為你的最佳工作夥伴，專注重要事，其他交給牠。</p>
+      <a href="https://www.topwinfix.com.tw" target="_blank" rel="noopener">topwinfix.com.tw</a>
       <div class="hashtags">
         <span>#鼎威維修</span><span>#TopWinFix</span><span>#Codex</span><span>#AI工具</span>
         <span>#工作效率</span><span>#資料備份</span><span>#AI自動化</span><span>#手機維修</span>
       </div>
     </div>
   </footer>
+
 </body>
 </html>
