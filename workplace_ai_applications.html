@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 個職場 AI 應用清單｜知識工作者必存</title>
+  <meta name="description" content="知識型工作者必看：5 個職場 AI 應用清單，涵蓋技能檢視、學習資源、成本控制、旅遊規劃與溝通優化。存起來，等於贏一半。" />
+  <style>
+    :root {
+      --bg: #0a0a14;
+      --bg-soft: #12121f;
+      --text: #f5f4ef;
+      --muted: rgba(245, 244, 239, 0.68);
+      --line: rgba(255, 255, 255, 0.12);
+      --glass: rgba(255, 255, 255, 0.05);
+      --glass-strong: rgba(255, 255, 255, 0.10);
+      --accent: #f4d47a;
+      --accent-2: #8bd9ff;
+      --accent-3: #ff9ecf;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --max: 1140px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 12% -8%, rgba(139, 217, 255, 0.14), transparent 60%),
+        radial-gradient(1000px 560px at 100% 0%, rgba(244, 212, 122, 0.12), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(255, 158, 207, 0.10), transparent 60%),
+        var(--bg);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    /* ---------- Hero ---------- */
+    header.hero {
+      position: relative;
+      padding: 96px 0 64px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      border-radius: 999px;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      backdrop-filter: blur(8px);
+    }
+    .eyebrow .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .hero h1 {
+      margin: 24px auto 0;
+      max-width: 20ch;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(100deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p.lead {
+      margin: 20px auto 0;
+      max-width: 46ch;
+      font-size: clamp(16px, 2.4vw, 20px);
+      color: var(--muted);
+    }
+
+    .cta-row {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(100deg, var(--accent), #ffe6a8);
+      color: #1a1608;
+      box-shadow: 0 12px 30px rgba(244, 212, 122, 0.30);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(244, 212, 122, 0.42); }
+    .btn-ghost {
+      background: var(--glass);
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--glass-strong); transform: translateY(-2px); }
+
+    /* ---------- Stat strip ---------- */
+    .stats {
+      margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 720px;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      background: var(--glass);
+      border-radius: var(--radius-lg);
+      padding: 20px 16px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+    .stat .num {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 900;
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .stat .label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ---------- Cards ---------- */
+    section.list { padding: 72px 0 40px; }
+    .section-head { text-align: center; margin-bottom: 44px; }
+    .section-head h2 {
+      font-size: clamp(26px, 4.4vw, 40px);
+      font-weight: 900;
+      margin: 0;
+    }
+    .section-head p { color: var(--muted); margin: 12px auto 0; max-width: 40ch; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--glass-strong), var(--glass));
+      border-radius: var(--radius-xl);
+      padding: 30px 28px;
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px 200px at 100% 0%, var(--tint, rgba(244,212,122,0.16)), transparent 60%);
+      opacity: .9;
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.28);
+      box-shadow: var(--shadow);
+    }
+    .card .top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .badge {
+      flex: none;
+      width: 54px; height: 54px;
+      display: grid; place-items: center;
+      border-radius: 16px;
+      font-size: 26px; font-weight: 900;
+      background: var(--glass-strong);
+      border: 1px solid var(--line);
+      color: var(--accent);
+    }
+    .card h3 { margin: 0; font-size: 21px; font-weight: 800; }
+    .card .source {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--accent-2);
+      letter-spacing: 0.02em;
+    }
+    .card p.desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      position: relative;
+    }
+    .card .tag {
+      position: absolute;
+      top: 22px; right: 24px;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.25);
+      color: var(--muted);
+    }
+
+    /* wide card #5 */
+    .card.wide { grid-column: 1 / -1; }
+
+    /* ---------- Footer CTA ---------- */
+    .final {
+      margin: 40px 0 90px;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(160deg, rgba(244,212,122,0.10), rgba(139,217,255,0.06));
+      padding: 54px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+    .final h2 { font-size: clamp(24px, 4vw, 36px); margin: 0 0 12px; font-weight: 900; }
+    .final p { color: var(--muted); max-width: 42ch; margin: 0 auto 26px; }
+
+    footer.credit {
+      text-align: center;
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; max-width: 360px; }
+      header.hero { padding: 72px 0 40px; }
+    }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>知識型工作者必存</span>
+      <h1>你的 AI 技能<br /><span class="grad">正在悄悄過期</span></h1>
+      <p class="lead">5 個職場 AI 應用清單，一次上菜。從技能檢視到溝通優化，存起來，等於贏一半 —— 你會感謝現在存下來的自己。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#list">立即查看清單 ↓</a>
+        <a class="btn btn-ghost" href="#save">為什麼要存？</a>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><div class="num">85%</div><div class="label">員工學了 AI 卻不會用</div></div>
+        <div class="stat"><div class="num">5</div><div class="label">個可立即上手的應用</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label">免費資源與實戰指南</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="list" id="list">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>5 個職場 AI 應用清單</h2>
+        <p>每一項都對應一個真實的職場痛點，直接對症下藥。</p>
+      </div>
+
+      <div class="grid">
+
+        <article class="card reveal" style="--tint: rgba(244,212,122,0.18)">
+          <span class="tag">技能檢視</span>
+          <div class="top">
+            <div class="badge">①</div>
+            <div>
+              <h3>檢視技能</h3>
+              <span class="source">來源｜104 招募管理</span>
+            </div>
+          </div>
+          <p class="desc">洞悉「85% 員工學了 AI 卻不會用」的真相，先搞清楚自己站在技能光譜的哪一端，再決定下一步該補什麼。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(139,217,255,0.18)">
+          <span class="tag">學習資源</span>
+          <div class="top">
+            <div class="badge">②</div>
+            <div>
+              <h3>學習資源</h3>
+              <span class="source">來源｜台灣好報</span>
+            </div>
+          </div>
+          <p class="desc">免費的自媒體 AI 課程，由政大專家開講。零成本把觀念一次補齊，適合想入門或系統性複習的人。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(255,158,207,0.18)">
+          <span class="tag">成本控制</span>
+          <div class="top">
+            <div class="badge">③</div>
+            <div>
+              <h3>成本控制</h3>
+              <span class="source">來源｜HackMD</span>
+            </div>
+          </div>
+          <p class="desc">OpenClaw 模型選擇與成本控制實戰指南。搞懂什麼任務用什麼模型，別再為了小事燒大錢。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(139,255,190,0.16)">
+          <span class="tag">旅遊規劃</span>
+          <div class="top">
+            <div class="badge">④</div>
+            <div>
+              <h3>旅遊規劃</h3>
+              <span class="source">來源｜台視新聞網</span>
+            </div>
+          </div>
+          <p class="desc">用 AI 規劃旅遊很方便，但也有陷阱。認識潛在風險與必要考量，讓 AI 當助手而不是踩雷指南。</p>
+        </article>
+
+        <article class="card wide reveal" style="--tint: rgba(200,170,255,0.18)">
+          <span class="tag">溝通優化</span>
+          <div class="top">
+            <div class="badge">⑤</div>
+            <div>
+              <h3>溝通優化</h3>
+              <span class="source">來源｜流動日報</span>
+            </div>
+          </div>
+          <p class="desc">WhatsApp iOS 版新增 AI 寫作助手，訊息潤色、語氣調整一鍵完成。把日常溝通的每一則訊息都變得更專業、更省時。</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="save">
+    <div class="final reveal">
+      <h2>真心拜託，趕快存起來</h2>
+      <p>技能會過期，但整理好的清單不會。存下來，需要的時候一次找齊 —— 你會感謝現在存下來的自己。</p>
+      <a class="btn btn-primary" href="#list">回到清單頂端 ↑</a>
+    </div>
+  </section>
+
+  <footer class="credit">
+    <div class="wrap">1150526 Vibe coding · 鍾皓軒教學　｜　5 個職場 AI 應用清單</div>
+  </footer>
+
+  <script>
+    // Lightweight scroll reveal
+    const els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach((el) => io.observe(el));
+    } else {
+      els.forEach((el) => el.classList.add('in'));
+    }
+  </script>
+
+</body>
+</html>
