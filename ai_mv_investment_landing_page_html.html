@@ -605,6 +605,176 @@
         border-radius: 28px;
       }
     }
+
+    /* ---------- 明暗切換 Light / Dark Theme ---------- */
+    :root {
+      --toggle-track: rgba(255, 255, 255, 0.1);
+      --toggle-border: rgba(255, 255, 255, 0.18);
+      --toggle-knob: linear-gradient(135deg, var(--accent), #fff1bb);
+      --overlay-1: rgba(139, 217, 255, 0.18);
+      --overlay-2: rgba(244, 212, 122, 0.16);
+      --overlay-3: rgba(5, 5, 9, 0.92);
+      --overlay-4: rgba(5, 5, 9, 0.62);
+      --overlay-5: rgba(5, 5, 9, 0.88);
+      --overlay-6: rgba(5, 5, 9, 0.28);
+    }
+
+    body,
+    header,
+    .card,
+    .package,
+    .metric,
+    .process-item,
+    .hero-card,
+    .investment-panel,
+    .contact-box,
+    .film-overlay {
+      transition: background .5s ease, color .5s ease, border-color .5s ease;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f4f1e7;
+      --text: #1b1712;
+      --muted: rgba(27, 23, 18, 0.72);
+      --line: rgba(27, 23, 18, 0.16);
+      --glass: rgba(27, 23, 18, 0.05);
+      --glass-strong: rgba(27, 23, 18, 0.1);
+      --accent: #b8862b;
+      --accent-2: #2f83b4;
+      --shadow: 0 30px 90px rgba(70, 55, 20, 0.22);
+      --toggle-track: rgba(27, 23, 18, 0.08);
+      --toggle-border: rgba(27, 23, 18, 0.16);
+      --overlay-1: rgba(47, 131, 180, 0.14);
+      --overlay-2: rgba(184, 134, 43, 0.14);
+      --overlay-3: rgba(244, 241, 231, 0.9);
+      --overlay-4: rgba(244, 241, 231, 0.55);
+      --overlay-5: rgba(244, 241, 231, 0.86);
+      --overlay-6: rgba(244, 241, 231, 0.4);
+    }
+
+    :root[data-theme="light"] header {
+      background: linear-gradient(180deg, rgba(244, 241, 231, 0.72), rgba(244, 241, 231, 0.28));
+      border-bottom: 1px solid rgba(27, 23, 18, 0.08);
+    }
+
+    :root[data-theme="light"] .card,
+    :root[data-theme="light"] .hero-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.58));
+    }
+
+    :root[data-theme="light"] .metric,
+    :root[data-theme="light"] .process-item {
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    :root[data-theme="light"] .package {
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    :root[data-theme="light"] .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, #b8862b, #d8a94a);
+    }
+
+    /* 淺色模式下修正硬編碼的淺色文字，確保可讀性 */
+    :root[data-theme="light"] nav,
+    :root[data-theme="light"] .eyebrow,
+    :root[data-theme="light"] .card p,
+    :root[data-theme="light"] .metric span,
+    :root[data-theme="light"] .package p,
+    :root[data-theme="light"] .scroll-indicator,
+    :root[data-theme="light"] .footer-inner {
+      color: var(--muted);
+    }
+
+    :root[data-theme="light"] .button-secondary {
+      color: var(--text);
+    }
+
+    .film-overlay {
+      background:
+        radial-gradient(circle at 20% 15%, var(--overlay-1), transparent 34%),
+        radial-gradient(circle at 78% 20%, var(--overlay-2), transparent 30%),
+        linear-gradient(90deg, var(--overlay-3), var(--overlay-4) 45%, var(--overlay-5)),
+        linear-gradient(180deg, var(--overlay-6), var(--overlay-3));
+    }
+
+    /* 切換開關本體 */
+    .theme-toggle {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      width: 64px;
+      height: 34px;
+      padding: 3px;
+      border: 1px solid var(--toggle-border);
+      border-radius: 999px;
+      background: var(--toggle-track);
+      cursor: pointer;
+      flex: none;
+      transition: background .4s ease, border-color .4s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .theme-toggle .toggle-knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--toggle-knob);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.32);
+      transition: transform .42s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    :root[data-theme="light"] .theme-toggle .toggle-knob {
+      transform: translateX(30px);
+    }
+
+    .theme-toggle .toggle-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--muted);
+      display: grid;
+      place-items: center;
+      transition: opacity .4s ease, color .4s ease;
+      pointer-events: none;
+    }
+
+    .theme-toggle .toggle-icon svg {
+      width: 15px;
+      height: 15px;
+      display: block;
+    }
+
+    .theme-toggle .icon-moon {
+      right: 8px;
+      opacity: 1;
+    }
+
+    .theme-toggle .icon-sun {
+      left: 8px;
+      opacity: 0.45;
+    }
+
+    :root[data-theme="light"] .theme-toggle .icon-moon {
+      opacity: 0.45;
+    }
+
+    :root[data-theme="light"] .theme-toggle .icon-sun {
+      opacity: 1;
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -643,6 +813,27 @@
         <a href="#investment">招商方案</a>
         <a href="#contact" class="nav-cta">預約洽談</a>
       </nav>
+      <button
+        type="button"
+        class="theme-toggle"
+        id="themeToggle"
+        role="switch"
+        aria-checked="false"
+        aria-label="切換明暗主題"
+        title="切換明暗主題">
+        <span class="toggle-icon icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </span>
+        <span class="toggle-icon icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </span>
+        <span class="toggle-knob" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
 
@@ -815,6 +1006,30 @@
 
     enterButton.addEventListener('click', () => {
       enterGate.classList.add('is-hidden');
+    });
+
+    /* ---------- 明暗主題切換 ---------- */
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const STORAGE_KEY = 'aimv-theme';
+
+    const applyTheme = (theme) => {
+      if (theme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        themeToggle.setAttribute('aria-checked', 'true');
+      } else {
+        root.removeAttribute('data-theme');
+        themeToggle.setAttribute('aria-checked', 'false');
+      }
+    };
+
+    const savedTheme = localStorage.getItem(STORAGE_KEY);
+    applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      localStorage.setItem(STORAGE_KEY, next);
     });
   </script>
 </body>
