@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 個免費學日文平台清單｜花大錢前先看這篇</title>
+  <meta name="description" content="在花費鉅資學日文之前，先看看這 7 個免費（或極少花費）的學習平台：Minato、NHK World-Japan、Tadoku、JMOOC、UTokyo OCW、NHK E-tele、JOCW。" />
+  <style>
+    :root {
+      --bg: #0c0910;
+      --text: #f6f3f2;
+      --muted: rgba(246, 243, 242, 0.68);
+      --line: rgba(255, 255, 255, 0.12);
+      --glass: rgba(255, 255, 255, 0.05);
+      --glass-strong: rgba(255, 255, 255, 0.10);
+      --accent: #ff6b81;      /* 日之丸紅 */
+      --accent-2: #ffd0a8;
+      --accent-3: #b7a8ff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --max: 1140px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 12% -8%, rgba(255, 107, 129, 0.16), transparent 60%),
+        radial-gradient(1000px 560px at 100% 0%, rgba(255, 208, 168, 0.12), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(183, 168, 255, 0.10), transparent 60%),
+        var(--bg);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+
+    /* ---------- Hero ---------- */
+    header.hero { position: relative; padding: 96px 0 60px; text-align: center; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px; border: 1px solid var(--line);
+      background: var(--glass); border-radius: 999px;
+      font-size: 14px; letter-spacing: 0.06em; color: var(--muted);
+      backdrop-filter: blur(8px);
+    }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+
+    .hero h1 {
+      margin: 24px auto 0; max-width: 20ch;
+      font-size: clamp(34px, 6vw, 62px); line-height: 1.12;
+      font-weight: 900; letter-spacing: -0.01em;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(100deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero h1 .jp { display: block; font-size: 0.42em; letter-spacing: 0.3em; color: var(--muted); margin-top: 14px; font-weight: 600; }
+
+    .hero p.lead { margin: 20px auto 0; max-width: 48ch; font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); }
+
+    .cta-row { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px; border-radius: 999px; font-weight: 700; font-size: 16px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer; border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(100deg, var(--accent), #ffb0bd);
+      color: #2a0d12; box-shadow: 0 12px 30px rgba(255, 107, 129, 0.30);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(255, 107, 129, 0.42); }
+    .btn-ghost { background: var(--glass); border-color: var(--line); color: var(--text); }
+    .btn-ghost:hover { background: var(--glass-strong); transform: translateY(-2px); }
+
+    /* ---------- Stat strip ---------- */
+    .stats { margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 720px; }
+    .stat { border: 1px solid var(--line); background: var(--glass); border-radius: var(--radius-lg); padding: 20px 16px; text-align: center; backdrop-filter: blur(6px); }
+    .stat .num { font-size: clamp(26px, 5vw, 38px); font-weight: 900; background: linear-gradient(100deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stat .label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ---------- Cards ---------- */
+    section.list { padding: 72px 0 40px; }
+    .section-head { text-align: center; margin-bottom: 44px; }
+    .section-head h2 { font-size: clamp(26px, 4.4vw, 40px); font-weight: 900; margin: 0; }
+    .section-head p { color: var(--muted); margin: 12px auto 0; max-width: 44ch; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .card {
+      position: relative; border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--glass-strong), var(--glass));
+      border-radius: var(--radius-xl); padding: 30px 28px; overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(400px 200px at 100% 0%, var(--tint, rgba(255,107,129,0.16)), transparent 60%);
+      opacity: .9; pointer-events: none;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.28); box-shadow: var(--shadow); }
+    .card .top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; position: relative; }
+    .badge {
+      flex: none; width: 54px; height: 54px; display: grid; place-items: center;
+      border-radius: 16px; font-size: 22px; font-weight: 900;
+      background: var(--glass-strong); border: 1px solid var(--line); color: var(--accent);
+    }
+    .card h3 { margin: 0; font-size: 20px; font-weight: 800; }
+    .card .kind { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--accent-2); letter-spacing: 0.03em; }
+    .card p.desc { margin: 0; color: var(--muted); font-size: 15px; position: relative; }
+    .card .level { position: absolute; top: 22px; right: 24px; font-size: 12px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(0,0,0,0.25); color: var(--muted); }
+    .card.wide { grid-column: 1 / -1; }
+
+    /* ---------- Final ---------- */
+    .final { margin: 40px 0 90px; text-align: center; border: 1px solid var(--line); border-radius: var(--radius-xl); background: linear-gradient(160deg, rgba(255,107,129,0.10), rgba(183,168,255,0.06)); padding: 54px 26px; position: relative; overflow: hidden; }
+    .final h2 { font-size: clamp(24px, 4vw, 36px); margin: 0 0 12px; font-weight: 900; }
+    .final p { color: var(--muted); max-width: 44ch; margin: 0 auto 26px; }
+
+    footer.credit { text-align: center; padding: 28px 0 48px; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; max-width: 360px; }
+      header.hero { padding: 72px 0 40px; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>知識型工作者必存</span>
+      <h1>花大錢學日文前，<br /><span class="grad">先看這 7 個免費平台</span>
+        <span class="jp">日本語を、ゼロ円から。</span>
+      </h1>
+      <p class="lead">在花費鉅資之前，這些免費（或花費極少）的學習平台，涵蓋聽力、單字、跟讀、學術日語與 JLPT 備考。存起來，慢慢用。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#list">查看 7 個平台 ↓</a>
+        <a class="btn btn-ghost" href="#final">為什麼先存？</a>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><div class="num">7</div><div class="label">個免費學習平台</div></div>
+        <div class="stat"><div class="num">¥0</div><div class="label">大多完全免費</div></div>
+        <div class="stat"><div class="num">N5→N1</div><div class="label">從入門到 JLPT 高階</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="list" id="list">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>7 個免費學日文平台</h2>
+        <p>從聽力入門到學術日語，依你的程度挑著用。</p>
+      </div>
+
+      <div class="grid">
+
+        <article class="card reveal" style="--tint: rgba(255,107,129,0.18)">
+          <span class="level">入門～中級</span>
+          <div class="top">
+            <div class="badge">1️⃣</div>
+            <div>
+              <h3>Minato</h3>
+              <span class="kind">日本國際交流基金會學習平台</span>
+            </div>
+          </div>
+          <p class="desc">透過各種日語課程練習聽力、學習單字的絕佳平台。官方出品、循序漸進，適合打好基礎。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(255,208,168,0.18)">
+          <span class="level">全程度</span>
+          <div class="top">
+            <div class="badge">2️⃣</div>
+            <div>
+              <h3>NHK World-Japan</h3>
+              <span class="kind">免費新聞與課程</span>
+            </div>
+          </div>
+          <p class="desc">提供無數免費課程，對「沉浸式語言學習」、練習實際生活中的日語聽力，以及擴充詞彙量非常有用。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(183,168,255,0.18)">
+          <span class="level">口說・發音</span>
+          <div class="top">
+            <div class="badge">3️⃣</div>
+            <div>
+              <h3>Tadoku App</h3>
+              <span class="kind">多讀・跟讀神器</span>
+            </div>
+          </div>
+          <p class="desc">學習者的得力助手。最突出的是超便利的「翻譯與掃描書籍」，加上「影片 Shadowing 跟讀」模式，練口說、糾正發音，向母語人士看齊。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(140,220,255,0.16)">
+          <span class="level">JLPT N2・N1</span>
+          <div class="top">
+            <div class="badge">4️⃣</div>
+            <div>
+              <h3>JMOOC</h3>
+              <span class="kind">日本各大學線上課程</span>
+            </div>
+          </div>
+          <p class="desc">免費提供日本各大學的課程。是提升學術日語、高級聽力練習的「寶庫」，特別適合準備 JLPT N2、N1 的同學。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(255,158,207,0.16)">
+          <span class="level">高階・學術</span>
+          <div class="top">
+            <div class="badge">5️⃣</div>
+            <div>
+              <h3>UTokyo OCW</h3>
+              <span class="kind">東京大學公開課程</span>
+            </div>
+          </div>
+          <p class="desc">線上觀看東京大學課程的平台。非常適合想挑戰專業日語與學術環境的人。</p>
+        </article>
+
+        <article class="card reveal" style="--tint: rgba(140,255,190,0.16)">
+          <span class="level">文化・聽力</span>
+          <div class="top">
+            <div class="badge">6️⃣</div>
+            <div>
+              <h3>NHK E-tele</h3>
+              <span class="kind">NHK 教育頻道</span>
+            </div>
+          </div>
+          <p class="desc">日本的國民教育頻道，發音標準、學習資源豐富。非常適合練聽力，並進一步了解日本的文化與社會。</p>
+        </article>
+
+        <article class="card wide reveal" style="--tint: rgba(200,170,255,0.18)">
+          <span class="level">自然語速</span>
+          <div class="top">
+            <div class="badge">7️⃣</div>
+            <div>
+              <h3>JOCW（Japan OpenCourseWare）</h3>
+              <span class="kind">日本各大學公開課程統整</span>
+            </div>
+          </div>
+          <p class="desc">統整日本各大學的公開課程，幫助你熟悉日本教授自然的語速與實際表達方式 —— 從教科書的日語，走進真實課堂的日語。</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="final">
+    <div class="final reveal">
+      <h2>先存起來，再慢慢學</h2>
+      <p>學語言是馬拉松，不是衝刺。把這 7 個平台收好，需要聽力、單字、跟讀或備考時，一次找齊。頑張って！</p>
+      <a class="btn btn-primary" href="#list">回到清單頂端 ↑</a>
+    </div>
+  </section>
+
+  <footer class="credit">
+    <div class="wrap">1150526 Vibe coding · 鍾皓軒教學　｜　7 個免費學日文平台清單</div>
+  </footer>
+
+  <script>
+    const els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach((el) => io.observe(el));
+    } else {
+      els.forEach((el) => el.classList.add('in'));
+    }
+  </script>
+
+</body>
+</html>
